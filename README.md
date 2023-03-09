@@ -13,7 +13,7 @@ This method allows you to run a given task asynchronously using a CompletableFut
     
 Example usage:
 
-```
+```Java
 VPromise.Run(() -> {
     // Asynchronous task to execute
     System.out.println("Executing asynchronous code...");
