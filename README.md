@@ -33,7 +33,7 @@ This method also runs a task asynchronously using a CompletableFuture, but it al
     
 Example usage:
 
-```
+```Java
 VPromise.Run(() -> {
     // Asynchronous task to execute
     System.out.println("Executing asynchronous code...");
@@ -57,7 +57,7 @@ This method encrypts a given text using a symmetric key algorithm. It takes two 
     
 Example usage:
 
-```
+```Java
 Key key = VCrypt.generateKey();
 String originalText = "Hello, this is a test text.";
 
@@ -75,7 +75,7 @@ This method decrypts an encrypted text using a symmetric key algorithm. It takes
     
 Example usage:
 
-```
+```Java
 Key key = VCrypt.generateKey();
 String originalText = "Hello, this is a test text.";
 
@@ -93,7 +93,7 @@ This method generates a random symmetric key. It takes no parameters.
 
 Example usage:
 
-```
+```Java
 Key key = VCrypt.generateKey();
 ```
     
@@ -105,7 +105,7 @@ This method writes a formatted string to the console, without appending a new li
 
 Example usage:
 
-```
+```Java
 VConsole.Write("This is a formatted %s", "string");
 ```
     
@@ -115,6 +115,6 @@ This method writes a formatted string to the console, appending a new line chara
 
 Example usage:
 
-```
+```Java
 VConsole.WriteLine("This is a formatted %s", "string");
 ```
