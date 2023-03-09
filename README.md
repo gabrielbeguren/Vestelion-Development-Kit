@@ -1,6 +1,6 @@
 # VestelionKit
 
-Here i provide some classes for general purpose on Java 19 and some features like promises.
+VestelionKit is a software development kit that provides several classes for developing applications. These classes include VPromise, VCrypt, and VConsole.
 
 ## VPromise class
 
