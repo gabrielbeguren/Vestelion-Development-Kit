@@ -8,6 +8,7 @@ This method allows you to run a given task asynchronously using a CompletableFut
 
 *  **task**: a Runnable that represents the code to be executed asynchronously.
 *  **exceptionHandler**: a Consumer<Throwable> that is called if an exception occurs during the execution of the task.
+    
 Example usage:
 
 ```
@@ -24,9 +25,10 @@ VPromise.Run(() -> {
     
 This method also runs a task asynchronously using a CompletableFuture, but it allows you to specify a completion task to run after the main task has completed. It takes three parameters:
 
-task: a Runnable that represents the main task to be executed asynchronously.
-exceptionHandler: a Consumer<Throwable> that is called if an exception occurs during the execution of the task.
-completionTask: a Runnable that is executed when the main task has completed successfully.
+* **task**: a Runnable that represents the main task to be executed asynchronously.
+* **exceptionHandler**: a Consumer<Throwable> that is called if an exception occurs during the execution of the task.
+* **completionTask**: a Runnable that is executed when the main task has completed successfully.
+    
 Example usage:
 
 ```
@@ -48,8 +50,9 @@ VPromise.Run(() -> {
     
 This method encrypts a given text using a symmetric key algorithm. It takes two parameters:
 
-text: the text to encrypt.
-key: the key to use for encryption.
+* **text**: the text to encrypt.
+* **key**: the key to use for encryption.
+    
 Example usage:
 
 ```
@@ -65,8 +68,9 @@ System.out.println("Encrypted text: " + encryptedText);
     
 This method decrypts an encrypted text using a symmetric key algorithm. It takes two parameters:
 
-encryptedText: the text to decrypt.
-key: the key to use for decryption.
+* **encryptedText**: the text to decrypt.
+* **key**: the key to use for decryption.
+    
 Example usage:
 
 ```
