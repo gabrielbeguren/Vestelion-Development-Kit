@@ -6,8 +6,8 @@
     
 This method allows you to run a given task asynchronously using a CompletableFuture. It takes two parameters:
 
-task: a Runnable that represents the code to be executed asynchronously.
-exceptionHandler: a Consumer<Throwable> that is called if an exception occurs during the execution of the task.
+*  **task**: a Runnable that represents the code to be executed asynchronously.
+*  **exceptionHandler**: a Consumer<Throwable> that is called if an exception occurs during the execution of the task.
 Example usage:
 
 ```
