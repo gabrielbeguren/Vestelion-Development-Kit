@@ -5,7 +5,8 @@ import VestelionKit.VCrypt;
 
 import java.security.Key;
 
-public class Tests {
+public class Tests 
+{
     public static void main(String[] args) throws Exception
     {
         // Test VPromise class
