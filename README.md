@@ -1,5 +1,7 @@
 # VestelionKit
 
+Here i provide some classes for general purpose on Java 19 and some features like promises.
+
 ## VPromise class
 
 ### Run(Runnable task, Consumer<Throwable> exceptionHandler)
