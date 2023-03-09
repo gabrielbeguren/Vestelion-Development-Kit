@@ -2,7 +2,7 @@
 
 ## VPromise class
 
-### Run(Runnable task, Consumer<Throwable> exceptionHandler)
+### [Run(Runnable task, Consumer<Throwable> exceptionHandler)](https://example.com/vestelionkit/vpromise.md#runrunnable-task-consumerthrowable-exceptionhandler)
     
 This method allows you to run a given task asynchronously using a CompletableFuture. It takes two parameters:
 
