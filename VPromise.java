@@ -41,8 +41,10 @@ public class VPromise
         future.whenComplete((result, ex) -> {
             if (ex != null) {
                 exceptionHandler.accept(ex);
-            } else if (completionTask != null) {
-                completionTask.run();
+            } else {
+                if (completionTask != null) {
+                    completionTask.run();
+                }
             }
         });
 
