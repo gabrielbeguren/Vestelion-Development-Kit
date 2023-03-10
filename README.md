@@ -1,6 +1,6 @@
 # VestelionKit
 
-VestelionKit is a software development kit that provides several classes for developing applications. These classes include VPromise, VCrypt, and VConsole.
+VestelionKit is a software development kit that provides several classes for developing applications.
 
 ## VPromise Class
 
