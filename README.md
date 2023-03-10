@@ -1,6 +1,6 @@
 # Vestelion Development Kit
 
-VDK is a software development kit that provides several classes for developing applications.
+VDK is a software development kit that provides several classes for developing applications in Java.
 
 ## VPromise Class
 
