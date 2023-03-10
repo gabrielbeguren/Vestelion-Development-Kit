@@ -1,6 +1,6 @@
-# VestelionKit
+# Vestelion Development Kit
 
-VestelionKit is a software development kit that provides several classes for developing applications.
+VDK is a software development kit that provides several classes for developing applications.
 
 ## VPromise Class
 
