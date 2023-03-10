@@ -158,8 +158,8 @@ This method writes a log message to the console. It accepts a format string and 
 Example usage:
 ```java
 VConsole.WriteLog("A log message");
-Output:
-
+```
+    
 Output:
 ```
 (?) [dd/mm/yyyy-hh:mm] A log message
@@ -167,14 +167,14 @@ Output:
 
 ### static void WriteWarning(String format, Object... args)
 
-This method writes a warning message to the console. It accepts a format string and variable number of arguments that will be inserted in the placeholders of the format string. The message is formatted as "(!) message" and the text is colored yellow.
+This method writes a warning message to the console. It accepts a format string and variable number of arguments that will be inserted in the placeholders of the format string. The message is formatted as "(!) [dd/mm/yyyy-hh:mm] message" and the text is colored yellow.
 
 Example usage:
-```Java
+```java
 VConsole.WriteWarning("A warning message");
 ```
-
+    
 Output:
 ```
-(!) A warning message
+(!) [dd/mm/yyyy-hh:mm] A warning message
 ```
