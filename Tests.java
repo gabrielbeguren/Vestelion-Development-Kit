@@ -10,7 +10,7 @@ public class Tests
     public static void main(String[] args) throws Exception
     {
         // Test VPromise class
-        VPromise.Run(() -> {
+        VPromise.RunAsync(() -> {
             // This task will succeed
             VConsole.WriteLine("Task running successfully");
         }, ex -> {
@@ -21,7 +21,7 @@ public class Tests
             VConsole.WriteLine("Completion task called");
         });
 
-        VPromise.Run(() -> {
+        VPromise.RunAsync(() -> {
             // This task will throw an exception
             throw new RuntimeException("Task failed");
         }, ex -> {
