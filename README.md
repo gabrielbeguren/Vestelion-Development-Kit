@@ -153,16 +153,16 @@ This is a new line.
 
 ### static void WriteLog(String format, Object... args)
 
-This method writes a log message to the console. It accepts a format string and variable number of arguments that will be inserted in the placeholders of the format string. The message is formatted as "(?) message" and the text is colored green.
+This method writes a log message to the console. It accepts a format string and variable number of arguments that will be inserted in the placeholders of the format string. The message is formatted as "(?) [dd/mm/yyyy-hh:mm] message" and the text is colored green.
 
 Example usage:
-```Java
+```java
 VConsole.WriteLog("A log message");
-```
+Output:
 
 Output:
 ```
-(?) A log message
+(?) [dd/mm/yyyy-hh:mm] A log message
 ```
 
 ### static void WriteWarning(String format, Object... args)
