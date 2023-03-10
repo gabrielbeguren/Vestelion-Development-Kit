@@ -9,8 +9,10 @@ public class VPromise
     private Consumer<Throwable> exceptionHandler;
     private Runnable completionTask;
 
-    public VPromise(Runnable task, Consumer<Throwable> exceptionHandler) {
-        if (task == null || exceptionHandler == null) {
+    public VPromise(Runnable task, Consumer<Throwable> exceptionHandler)
+    {
+        if (task == null || exceptionHandler == null)
+        {
             throw new NullPointerException("Argument cannot be null");
         }
 
@@ -19,8 +21,10 @@ public class VPromise
         this.completionTask = null;
     }
 
-    public VPromise(Runnable task, Consumer<Throwable> exceptionHandler, Runnable completionTask) {
-        if (task == null || exceptionHandler == null || completionTask == null) {
+    public VPromise(Runnable task, Consumer<Throwable> exceptionHandler, Runnable completionTask)
+    {
+        if (task == null || exceptionHandler == null || completionTask == null)
+        {
             throw new NullPointerException("Argument cannot be null");
         }
 
@@ -29,28 +33,41 @@ public class VPromise
         this.completionTask = completionTask;
     }
 
-    public void RunAsync() throws NullPointerException {
-        CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
-            try {
+    public void RunAsync() throws NullPointerException
+    {
+        CompletableFuture<Void> future = CompletableFuture.runAsync(() ->
+        {
+            try
+            {
                 task.run();
-            } catch (Throwable ex) {
+            }
+            catch (Throwable ex)
+            {
                 exceptionHandler.accept(ex);
             }
         });
 
-        future.whenComplete((result, ex) -> {
-            if (ex != null) {
+        future.whenComplete((result, ex) ->
+        {
+            if (ex != null)
+            {
                 exceptionHandler.accept(ex);
-            } else {
-                if (completionTask != null) {
+            }
+            else
+            {
+                if (completionTask != null)
+                {
                     completionTask.run();
                 }
             }
         });
 
-        try {
+        try
+        {
             future.join();
-        } catch (Throwable ex) {
+        }
+        catch (Throwable ex)
+        {
             exceptionHandler.accept(ex);
         }
     }
