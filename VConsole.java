@@ -33,8 +33,10 @@ public class VConsole
 
     public static void WriteWarning(String format, Object... args)
     {
+        Date now = new Date();
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy-HH:mm");
         Formatter formatter = new Formatter(Locale.getDefault());
-        String message = formatter.format("(!) " + format, args).toString();
+        String message = formatter.format("(!) [%s] %s", dateFormatter.format(now), format, args).toString();
         formatter.close();
         System.out.println("\033[33m" + message + "\033[0m");
     }
