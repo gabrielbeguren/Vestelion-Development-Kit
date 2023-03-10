@@ -15,41 +15,50 @@ The VPromise class provides two constructors:
 * **VPromise(Runnable task, Consumer<Throwable> exceptionHandler, Runnable completionTask)**: Creates a new instance of VPromise with the given task, exception handler, and completion task.
 Both constructors throw a NullPointerException if any of the arguments is null.
 
-### Class Methods
+## Methods
 
-#### __static void RunAsync(Runnable task, Consumer<Throwable> exceptionHandler)__ 
+### void RunAsync(Runnable task, Consumer<Throwable> exceptionHandler)</u>
 
 Executes the given task asynchronously and handles any exceptions using the given exception handler.
-
-#### __static void RunAsync(Runnable task, Consumer<Throwable> exceptionHandler, Runnable completionTask)__
-
-Executes the given task asynchronously, handles any exceptions using the given exception handler, and executes the given completion task when the task is completed successfully.
-
-#### __void RunAsync()__
-
-Executes the task asynchronously, handles any exceptions using the defined exception handler, and executes the defined completion task if it exists.
-
-All three methods throw a NullPointerException if any of the arguments is null.
-
-Example Usage
-
+    
+Throws a NullPointerException if any of the arguments is null.
+    
+Example usage:
 ```Java
 VPromise.RunAsync(() -> {
     // Execute some long-running task here
 }, ex -> {
     // Handle any exceptions that occur
 });
+```
 
+### static void RunAsync(Runnable task, Consumer<Throwable> exceptionHandler, Runnable completionTask)
+
+Executes the given task asynchronously, handles any exceptions using the given exception handler, and executes the given completion task when the task is completed successfully.
+
+Throws a NullPointerException if any of the arguments is null.
+    
+Example usage:
+```Java
 VPromise.RunAsync(() -> {
-    // Execute some long-running task here
+// Execute some long-running task here
 }, ex -> {
     // Handle any exceptions that occur
 }, () -> {
     // Execute this task when the main task is completed successfully
 });
+```
 
+### void RunAsync()
+
+Executes the task asynchronously, handles any exceptions using the defined exception handler, and executes the defined completion task if it exists.
+    
+Throws a NullPointerException if any of the arguments is null.
+    
+Example usage:
+```Java
 VPromise promise = new VPromise(() -> {
-    // Execute some long-running task here
+// Execute some long-running task here
 }, ex -> {
     // Handle any exceptions that occur
 }, () -> {
@@ -58,8 +67,6 @@ VPromise promise = new VPromise(() -> {
 
 promise.RunAsync();
 ```
-
-In the example above, we first execute a task asynchronously using the RunAsync method, passing in a task and an exception handler. In the second example, we execute a task asynchronously using the RunAsync method, passing in a task, an exception handler, and a completion task. In the third example, we create a new instance of VPromise and execute the task asynchronously using the RunAsync method defined in the class.
     
 ## VCrypt class
     
