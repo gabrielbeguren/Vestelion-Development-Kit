@@ -69,6 +69,8 @@ promise.RunAsync();
 ```
     
 ## VCrypt class
+
+The VCrypt class provides methods to encrypt and decrypt text using the AES encryption algorithm. It also provides a method to generate a secret key that can be used for encryption and decryption.
     
 ### encrypt(String text, Key key)
     
