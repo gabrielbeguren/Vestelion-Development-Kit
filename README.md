@@ -15,8 +15,6 @@ The VPromise class provides two constructors:
 * **VPromise(Runnable task, Consumer<Throwable> exceptionHandler, Runnable completionTask)**: Creates a new instance of VPromise with the given task, exception handler, and completion task.
 Both constructors throw a NullPointerException if any of the arguments is null.
 
-## Methods
-
 ### static void RunAsync(Runnable task, Consumer<Throwable> exceptionHandler)</u>
 
 Executes the given task asynchronously and handles any exceptions using the given exception handler.
@@ -124,8 +122,6 @@ Key key = VCrypt.GenerateKey();
 ## VConsole Class
 
 The VConsole class provides static methods to write messages to the console. It has methods to write text, log messages, and warnings.
-
-## Methods
 
 ### static void Write(String format, Object... args)
 
