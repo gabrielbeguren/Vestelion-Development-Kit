@@ -121,24 +121,64 @@ Example usage:
 Key key = VCrypt.generateKey();
 ```
     
-## VConsole class
+## VConsole Class
+
+The VConsole class provides static methods to write messages to the console. It has methods to write text, log messages, and warnings.
+
+## Methods
 
 ### Write(String format, Object... args)
-    
-This method writes a formatted string to the console, without appending a new line character. It takes a format string and a variable number of arguments.
+
+This method writes formatted text to the console. It accepts a format string and variable number of arguments that will be inserted in the placeholders of the format string. The formatted text is not followed by a newline.
 
 Example usage:
-
 ```Java
-VConsole.Write("This is a formatted %s", "string");
+VConsole.Write("Hello, %s!", "world");
 ```
-    
+
+Output:
+```
+Hello, world!
+```
+
 ### WriteLine(String format, Object... args)
-    
-This method writes a formatted string to the console, appending a new line character. It takes a format string and a variable number of arguments.
+
+This method writes formatted text to the console followed by a newline character. It accepts a format string and variable number of arguments that will be inserted in the placeholders of the format string.
 
 Example usage:
-
 ```Java
-VConsole.WriteLine("This is a formatted %s", "string");
+VConsole.WriteLine("This is a new line.");
+```
+
+Output:
+```
+This is a new line.
+```
+
+### WriteLog(String format, Object... args)
+
+This method writes a log message to the console. It accepts a format string and variable number of arguments that will be inserted in the placeholders of the format string. The message is formatted as "(?) message" and the text is colored green.
+
+Example usage:
+```Java
+VConsole.WriteLog("A log message");
+```
+
+Output:
+```
+(?) A log message
+```
+
+### WriteWarning(String format, Object... args)
+
+This method writes a warning message to the console. It accepts a format string and variable number of arguments that will be inserted in the placeholders of the format string. The message is formatted as "(!) message" and the text is colored yellow.
+
+Example usage:
+```Java
+VConsole.WriteWarning("A warning message");
+```
+
+Output:
+```
+(!) A warning message
 ```
