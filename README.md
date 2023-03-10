@@ -17,17 +17,15 @@ Both constructors throw a NullPointerException if any of the arguments is null.
 
 ### Class Methods
 
-The VPromise class provides three static methods:
-
-#### RunAsync(Runnable task, Consumer<Throwable> exceptionHandler) 
+* #### __static void RunAsync(Runnable task, Consumer<Throwable> exceptionHandler)__ 
 
 Executes the given task asynchronously and handles any exceptions using the given exception handler.
 
-#### RunAsync(Runnable task, Consumer<Throwable> exceptionHandler, Runnable completionTask)
+* #### __static void RunAsync(Runnable task, Consumer<Throwable> exceptionHandler, Runnable completionTask)__
 
 Executes the given task asynchronously, handles any exceptions using the given exception handler, and executes the given completion task when the task is completed successfully.
 
-#### RunAsync() 
+* #### __void RunAsync()__
 
 Executes the task asynchronously, handles any exceptions using the defined exception handler, and executes the defined completion task if it exists.
 
