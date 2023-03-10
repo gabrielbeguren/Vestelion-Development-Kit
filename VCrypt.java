@@ -10,7 +10,7 @@ import java.security.SecureRandom;
 
 public class VCrypt
 {
-    public static String encrypt(String text, Key key) throws Exception
+    public static String Encrypt(String text, Key key) throws Exception
     {
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, key);
@@ -18,7 +18,7 @@ public class VCrypt
         return Base64.getEncoder().encodeToString(encryptedText);
     }
 
-    public static String decrypt(String encryptedText, Key key) throws Exception
+    public static String Decrypt(String encryptedText, Key key) throws Exception
     {
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         cipher.init(Cipher.DECRYPT_MODE, key);
@@ -26,7 +26,7 @@ public class VCrypt
         return new String(decryptedText, "UTF-8");
     }
 
-    public static Key generateKey() throws Exception
+    public static Key GenerateKey() throws Exception
     {
         KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
         SecureRandom secureRandom = new SecureRandom();
