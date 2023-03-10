@@ -17,7 +17,7 @@ Both constructors throw a NullPointerException if any of the arguments is null.
 
 ## Methods
 
-### void RunAsync(Runnable task, Consumer<Throwable> exceptionHandler)</u>
+### static void RunAsync(Runnable task, Consumer<Throwable> exceptionHandler)</u>
 
 Executes the given task asynchronously and handles any exceptions using the given exception handler.
     
@@ -72,7 +72,7 @@ promise.RunAsync();
 
 The VCrypt class provides methods to encrypt and decrypt text using the AES encryption algorithm. It also provides a method to generate a secret key that can be used for encryption and decryption.
     
-### encrypt(String text, Key key)
+### static String Encrypt(String text, Key key)
     
 This method encrypts a given text using a symmetric key algorithm. It takes two parameters:
 
@@ -82,15 +82,15 @@ This method encrypts a given text using a symmetric key algorithm. It takes two 
 Example usage:
 
 ```Java
-Key key = VCrypt.generateKey();
+Key key = VCrypt.GenerateKey();
 String originalText = "Hello, this is a test text.";
 
-String encryptedText = VCrypt.encrypt(originalText, key);
+String encryptedText = VCrypt.Encrypt(originalText, key);
 System.out.println("Original text: " + originalText);
 System.out.println("Encrypted text: " + encryptedText);
 ```    
     
-### decrypt(String encryptedText, Key key)
+### String Decrypt(String encryptedText, Key key)
     
 This method decrypts an encrypted text using a symmetric key algorithm. It takes two parameters:
 
@@ -100,25 +100,25 @@ This method decrypts an encrypted text using a symmetric key algorithm. It takes
 Example usage:
 
 ```Java
-Key key = VCrypt.generateKey();
+Key key = VCrypt.GenerateKey();
 String originalText = "Hello, this is a test text.";
 
-String encryptedText = VCrypt.encrypt(originalText, key);
-String decryptedText = VCrypt.decrypt(encryptedText, key);
+String encryptedText = VCrypt.Encrypt(originalText, key);
+String decryptedText = VCrypt.Decrypt(encryptedText, key);
 
 System.out.println("Original text: " + originalText);
 System.out.println("Encrypted text: " + encryptedText);
 System.out.println("Decrypted text: " + decryptedText);
 ```
     
-### generateKey()
+### static Key GenerateKey()
     
 This method generates a random symmetric key. It takes no parameters.
 
 Example usage:
 
 ```Java
-Key key = VCrypt.generateKey();
+Key key = VCrypt.GenerateKey();
 ```
     
 ## VConsole Class
@@ -127,7 +127,7 @@ The VConsole class provides static methods to write messages to the console. It 
 
 ## Methods
 
-### Write(String format, Object... args)
+### static void Write(String format, Object... args)
 
 This method writes formatted text to the console. It accepts a format string and variable number of arguments that will be inserted in the placeholders of the format string. The formatted text is not followed by a newline.
 
@@ -141,7 +141,7 @@ Output:
 Hello, world!
 ```
 
-### WriteLine(String format, Object... args)
+### static void WriteLine(String format, Object... args)
 
 This method writes formatted text to the console followed by a newline character. It accepts a format string and variable number of arguments that will be inserted in the placeholders of the format string.
 
@@ -155,7 +155,7 @@ Output:
 This is a new line.
 ```
 
-### WriteLog(String format, Object... args)
+### static void WriteLog(String format, Object... args)
 
 This method writes a log message to the console. It accepts a format string and variable number of arguments that will be inserted in the placeholders of the format string. The message is formatted as "(?) message" and the text is colored green.
 
@@ -169,7 +169,7 @@ Output:
 (?) A log message
 ```
 
-### WriteWarning(String format, Object... args)
+### static void WriteWarning(String format, Object... args)
 
 This method writes a warning message to the console. It accepts a format string and variable number of arguments that will be inserted in the placeholders of the format string. The message is formatted as "(!) message" and the text is colored yellow.
 
