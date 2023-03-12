@@ -3,6 +3,7 @@ package VestelionKit;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Predicate;
 
 public class VList<T> implements Iterable<T>
 {
@@ -134,7 +135,7 @@ public class VList<T> implements Iterable<T>
 
         array[index] = value;
     }
-    
+
     public T Search(Predicate<T> predicate)
     {
         for (int i = 0; i < size; i++)
@@ -203,6 +204,8 @@ public class VList<T> implements Iterable<T>
 
         return updated;
     }
+
+
 
     @Override
     public Iterator<T> iterator()
