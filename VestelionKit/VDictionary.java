@@ -1,6 +1,7 @@
 package VestelionKit;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
@@ -194,6 +195,19 @@ public class VDictionary<T1, T2> implements Iterable<VTuple<T1, T2>>
 
         return updated;
     }
+
+    public HashMap<T1, T2> ToHashMap() 
+    {
+        HashMap<T1, T2> hashMap = new HashMap<>();
+
+        for (VTuple<T1, T2> pair : list) 
+        {
+            hashMap.put(pair.first, pair.second);
+        }
+
+        return hashMap;
+    }
+
 
     @Override
     public Iterator<VTuple<T1, T2>> iterator()
