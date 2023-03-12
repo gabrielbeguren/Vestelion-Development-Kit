@@ -134,6 +134,75 @@ public class VList<T> implements Iterable<T>
 
         array[index] = value;
     }
+    
+    public T Search(Predicate<T> predicate)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            T item = Get(i);
+
+            if (predicate.test(item))
+            {
+                return item;
+            }
+        }
+
+        return null;
+    }
+
+    public boolean RemoveIf(Predicate<T> predicate)
+    {
+        boolean removed = false;
+        int index = 0;
+
+        while (index < size)
+        {
+            T item = Get(index);
+
+            if (predicate.test(item))
+            {
+                RemoveAt(index);
+                removed = true;
+            }
+            else
+            {
+                index++;
+            }
+        }
+
+        return removed;
+    }
+
+    public int IndexOf(Predicate<T> predicate)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            T item = Get(i);
+
+            if (predicate.test(item))
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public boolean Update(Predicate<T> predicate, T newValue)
+    {
+        boolean updated = false;
+        for (int i = 0; i < size; i++)
+        {
+            T item = Get(i);
+            if (predicate.test(item))
+            {
+                Set(i, newValue);
+                updated = true;
+            }
+        }
+
+        return updated;
+    }
 
     @Override
     public Iterator<T> iterator()
