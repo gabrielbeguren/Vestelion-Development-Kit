@@ -3,6 +3,7 @@ package VestelionKit;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class VDictionary<T1, T2> implements Iterable<VTuple<T1, T2>>
 {
@@ -124,6 +125,74 @@ public class VDictionary<T1, T2> implements Iterable<VTuple<T1, T2>>
         }
 
         return values;
+    }
+
+    public T2 Search(Predicate<VTuple<T1, T2>> predicate)
+    {
+        for (VTuple<T1, T2> pair : list)
+        {
+            if (predicate.test(pair))
+            {
+                return pair.second;
+            }
+        }
+
+        return null;
+    }
+
+    public int IndexOf(Predicate<VTuple<T1, T2>> predicate)
+    {
+        for (int i = 0; i < list.Size(); i++)
+        {
+            VTuple<T1, T2> pair = list.Get(i);
+
+            if (predicate.test(pair))
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public boolean RemoveIf(Predicate<VTuple<T1, T2>> predicate)
+    {
+        boolean removed = false;
+        int index = 0;
+
+        while (index < list.Size())
+        {
+            VTuple<T1, T2> pair = list.Get(index);
+
+            if (predicate.test(pair))
+            {
+                list.RemoveAt(index);
+                removed = true;
+            }
+            else
+            {
+                index++;
+            }
+        }
+
+        return removed;
+    }
+
+    public boolean Update(Predicate<VTuple<T1, T2>> predicate, T2 newValue)
+    {
+        boolean updated = false;
+        for (int i = 0; i < list.Size(); i++)
+        {
+            VTuple<T1, T2> pair = list.Get(i);
+
+            if (predicate.test(pair))
+            {
+                list.Set(i, new VTuple<>(pair.first, newValue));
+                updated = true;
+            }
+        }
+
+        return updated;
     }
 
     @Override
