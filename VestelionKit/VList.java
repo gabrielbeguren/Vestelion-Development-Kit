@@ -2,6 +2,8 @@ package VestelionKit;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.function.Predicate;
 
@@ -205,7 +207,17 @@ public class VList<T> implements Iterable<T>
         return updated;
     }
 
+    public List<T> ToJavaList()
+    {
+        List<T> javaList = new ArrayList<>();
 
+        for (int i = 0; i < size; i++)
+        {
+            javaList.add(Get(i));
+        }
+
+        return javaList;
+    }
 
     @Override
     public Iterator<T> iterator()
