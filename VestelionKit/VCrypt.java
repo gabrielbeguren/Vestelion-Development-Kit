@@ -1,37 +1,161 @@
 package VestelionKit;
 
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
-import java.util.Base64;
-import java.security.Key;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import java.security.SecureRandom;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
-public class VCrypt
+public class VAsync
 {
-    public static String Encrypt(String text, Key key) throws Exception
+    private Runnable task;
+    private Consumer<Throwable> exceptionHandler;
+    private Runnable completionTask;
+
+    public VAsync(Runnable task, Consumer<Throwable> exceptionHandler)
     {
-        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        cipher.init(Cipher.ENCRYPT_MODE, key);
-        byte[] encryptedText = cipher.doFinal(text.getBytes("UTF-8"));
-        return Base64.getEncoder().encodeToString(encryptedText);
+        if (task == null || exceptionHandler == null)
+        {
+            throw new NullPointerException("Argument cannot be null");
+        }
+
+        this.task = task;
+        this.exceptionHandler = exceptionHandler;
+        this.completionTask = null;
     }
 
-    public static String Decrypt(String encryptedText, Key key) throws Exception
+    public VAsync(Runnable task, Consumer<Throwable> exceptionHandler, Runnable completionTask)
     {
-        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        cipher.init(Cipher.DECRYPT_MODE, key);
-        byte[] decryptedText = cipher.doFinal(Base64.getDecoder().decode(encryptedText));
-        return new String(decryptedText, "UTF-8");
+        if (task == null || exceptionHandler == null || completionTask == null)
+        {
+            throw new NullPointerException("Argument cannot be null");
+        }
+
+        this.task = task;
+        this.exceptionHandler = exceptionHandler;
+        this.completionTask = completionTask;
     }
 
-    public static Key GenerateKey() throws Exception
+    public void AwaitAsync() throws NullPointerException
     {
-        KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-        SecureRandom secureRandom = new SecureRandom();
-        keyGenerator.init(secureRandom);
-        SecretKey secretKey = keyGenerator.generateKey();
-        return new SecretKeySpec(secretKey.getEncoded(), "AES");
+        CompletableFuture.runAsync(() -> task.run())
+            .whenComplete((result, ex) -> {
+                if (ex != null) {
+                    exceptionHandler.accept(ex);
+                }
+                else if (completionTask != null)
+                {
+                    completionTask.run();
+                }
+            });
+    }
+
+    public static void AwaitAsync(Runnable task) throws NullPointerException
+    {
+        if (task == null)
+        {
+            throw new NullPointerException("Argument cannot be null");
+        }
+
+        CompletableFuture.runAsync(() -> {
+            try
+            {
+                task.run();
+            }
+            catch (Throwable ex)
+            {
+                throw new RuntimeException(ex);
+            }
+        }).join();
+    }
+
+    public static void AwaitAsync(Runnable task, Consumer<Throwable> exceptionHandler) throws NullPointerException
+    {
+        if (task == null || exceptionHandler == null)
+        {
+            throw new NullPointerException("Argument cannot be null");
+        }
+
+        CompletableFuture.runAsync(() -> task.run())
+            .exceptionally(ex -> {
+                exceptionHandler.accept(ex);
+                return null;
+            }).join();
+    }
+
+    public static void AwaitAsync(Runnable task, Consumer<Throwable> exceptionHandler, Runnable completionTask) throws NullPointerException
+    {
+        if (task == null || exceptionHandler == null || completionTask == null)
+        {
+            throw new NullPointerException("Argument cannot be null");
+        }
+
+        CompletableFuture.runAsync(() -> task.run())
+            .whenComplete((result, ex) -> {
+                if (ex != null)
+                {
+                    exceptionHandler.accept(ex);
+                }
+                else
+                {
+                    completionTask.run();
+                }
+            }).join();
+    }
+
+    public void RunAsync()
+    {
+        CompletableFuture.runAsync(() -> task.run())
+            .whenComplete((result, ex) -> {
+                if (ex != null)
+                {
+                    exceptionHandler.accept(ex);
+                }
+                else if (completionTask != null)
+                {
+                    completionTask.run();
+                }
+            });
+    }
+
+    public static void RunAsync(Runnable task)
+    {
+        if (task == null)
+        {
+            throw new NullPointerException("Argument cannot be null");
+        }
+
+        CompletableFuture.runAsync(task);
+    }
+
+    public static void RunAsync(Runnable task, Consumer<Throwable> exceptionHandler)
+    {
+        if (task == null || exceptionHandler == null)
+        {
+            throw new NullPointerException("Argument cannot be null");
+        }
+
+        CompletableFuture.runAsync(() -> task.run())
+            .exceptionally(ex -> {
+                exceptionHandler.accept(ex);
+                return null;
+            });
+    }
+
+    public static void RunAsync(Runnable task, Consumer<Throwable> exceptionHandler, Runnable completionTask)
+    {
+        if (task == null || exceptionHandler == null || completionTask == null)
+        {
+            throw new NullPointerException("Argument cannot be null");
+        }
+
+        CompletableFuture.runAsync(() -> task.run())
+            .whenComplete((result, ex) -> {
+                if (ex != null)
+                {
+                    exceptionHandler.accept(ex);
+                }
+                else
+                {
+                    completionTask.run();
+                }
+            });
     }
 }
