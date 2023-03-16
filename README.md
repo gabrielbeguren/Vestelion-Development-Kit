@@ -21,9 +21,4 @@ The VDK wiki is maintained by the project's community, and contributions are wel
 
 ## VDK Logo
 
-![](Logo.png)
-
-## Tags
-
-- [java](https://github.com/topics/java)
-- [open-source](https://github.com/topics/open-source)
+![](VDKLogo.png)
