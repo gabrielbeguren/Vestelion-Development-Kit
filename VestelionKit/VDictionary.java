@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class VDictionary<K, V> implements Iterable<V>
+public class VDictionary<K, V> implements Iterable<VPair<K, V>>
 {
     private int size;
     private K[] keys;
@@ -174,12 +174,12 @@ public class VDictionary<K, V> implements Iterable<V>
         return -1;
     }
 
-    public Iterator<V> iterator ()
+    public Iterator<VPair<K, V>> iterator ()
     {
         return new VDictionaryIterator();
     }
 
-    private class VDictionaryIterator implements Iterator<V>
+    private class VDictionaryIterator implements Iterator<VPair<K, V>>
     {
         private int currentIndex = 0;
 
@@ -190,16 +190,17 @@ public class VDictionary<K, V> implements Iterable<V>
         }
 
         @Override
-        public V next()
+        public VPair<K, V> next()
         {
             if (!hasNext())
             {
                 throw new NoSuchElementException();
             }
 
-            V value = values[currentIndex];
+            VPair<K, V> pair = new VPair<>(keys[currentIndex], values[currentIndex]);
+
             currentIndex++;
-            return value;
+            return pair;
         }
     }
 }
