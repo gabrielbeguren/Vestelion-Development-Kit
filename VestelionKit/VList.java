@@ -21,6 +21,11 @@ public class VList<T> implements Iterable<T>
         size = array.length;
     }
 
+    public VList(List<T> list)
+    {
+        array = list.toArray((T[]) new Object[list.size()]);
+        size = list.size();
+    }
     public int Size()
     {
         return size;
@@ -305,6 +310,16 @@ public class VList<T> implements Iterable<T>
         {
             return null;
         }
+    }
+
+    public List<T> ToJavaList()
+    {
+        List<T> list = new ArrayList<>();
+        for (int i = 0; i < size; i++)
+        {
+            list.add(array[i]);
+        }
+        return list;
     }
 
     @Override
